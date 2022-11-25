@@ -4,11 +4,12 @@
         "declaration": true,
         "outDir": "dist",
         "module": "CommonJS",
-        "target": "ESNext",
+        "target": "ES6",
         "moduleResolution": "node",
         "sourceMap": true,
         "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true
+        "allowSyntheticDefaultImports": true,
+        "skipLibCheck": true
     },
     "exclude": [
         "src/protos.d.ts",
