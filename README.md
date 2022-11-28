@@ -18,9 +18,7 @@ See [this blog post](https://medium.com/@MatthieuLemoine/my-journey-to-bring-web
 
 ## Install
 
-`
-npm i -S @eneris/push-receiver
-`
+`npm i -S @eneris/push-receiver`
 
 ## Requirements
 
@@ -28,62 +26,61 @@ npm i -S @eneris/push-receiver
 - Firebase sender id to receive notification
 - Firebase serverKey to send notification (optional)
 
-
 ## Usage
 
 ### ClientConfig
 
 ```typescript
 interface ClientConfig {
-    credentials?: Credentials // Will be generated if missing - save this after first use!
-    persistentIds?: PersistentId[] // Default - []
-    senderId: string // Required
-    bundleId?: string // Default - 'receiver.push.com'
-    chromeId?: string // Default - 'org.chromium.linux'
-    chromeVersion?: string // Default - '94.0.4606.51'
-    skipFcmRegistration?: boolean // Default - false
-    logLevel?: keyof typeof LogLevels // 'NONE'|'DEBUG'|'VERBOSE' - default: 'NONE'
-    vapidKey?: string // Default - default firebase VAPID key
-    heartbeatIntervalMs?: number // Default - 5 * 60 * 1000
+  credentials?: Credentials; // Will be generated if missing - save this after first use!
+  persistentIds?: PersistentId[]; // Default - []
+  senderId: string; // Required
+  bundleId?: string; // Default - 'receiver.push.com'
+  chromeId?: string; // Default - 'org.chromium.linux'
+  chromeVersion?: string; // Default - '94.0.4606.51'
+  skipFcmRegistration?: boolean; // Default - false
+  logLevel?: keyof typeof LogLevels; // 'NONE'|'DEBUG'|'VERBOSE' - default: 'NONE'
+  vapidKey?: string; // Default - default firebase VAPID key
+  heartbeatIntervalMs?: number; // Default - 5 * 60 * 1000
 }
 ```
 
 ### Node example
 
 ```javascript
-import PushReceiver from '@eneris/push-receiver'
-import { argv as parsedArgs } from 'yargs'
+import PushReceiver from "@eneris/push-receiver";
+import { argv as parsedArgs } from "yargs";
 
 if (!parsedArgs.senderId) {
-    console.error('Missing senderId')
-    return
+  console.error("Missing senderId");
+  return;
 }
 
 (async () => {
-    const instance = new PushReceiver({
-        logLevel: parsedArgs.logLevel || 'DEBUG',
-        senderId: parsedArgs.senderId,
-        persistentIds: [], // Recover stored ids of all previous notifications
-    })
+  const instance = new PushReceiver({
+    logLevel: parsedArgs.logLevel || "DEBUG",
+    senderId: parsedArgs.senderId,
+    persistentIds: [], // Recover stored ids of all previous notifications
+  });
 
-    const stopListeningToCredentials = instance.onCredentialsChanged(({ oldCredentials, newCredentials }) => {
-        console.log('Client generated new credentials.', newCredentials)
-        // Save them somewhere! And decide if thing are needed to re-subscribe
-    })
+  const stopListeningToCredentials = instance.onCredentialsChanged(({ oldCredentials, newCredentials }) => {
+    console.log("Client generated new credentials.", newCredentials);
+    // Save them somewhere! And decide if thing are needed to re-subscribe
+  });
 
-    const stopListeningToNotifications = instance.onNotification(({ notification }) => {
-        // Do someting with the notification
-        console.log('Notification received', notification)
-    })
+  const stopListeningToNotifications = instance.onNotification(({ notification }) => {
+    // Do someting with the notification
+    console.log("Notification received", notification);
+  });
 
-    await instance.connect()
+  await instance.connect();
 
-    if (parsedArgs.serverId) {
-        await instance.testMessage(parsedArgs.serverId)
-    }
+  if (parsedArgs.serverId) {
+    await instance.testMessage(parsedArgs.serverId);
+  }
 
-    stopListeningToCredentials()
-    stopListeningToNotifications()
-    instance.destroy()
-})()
+  stopListeningToCredentials();
+  stopListeningToNotifications();
+  instance.destroy();
+})();
 ```

@@ -1,6 +1,3 @@
-node_modules
-.DS_Store
-npm-debug.log
 coverage
 *.pem
 storage.json
@@ -8,7 +5,30 @@ web/
 .esm-cache
 test/keys.js
 .history
-dist
 src/protos.d.ts
 *.tsbuildinfo
 yarn-error.log
+
+.DS_Store
+node_modules
+
+/tests/e2e/videos/
+/tests/e2e/screenshots/
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+#Electron-builder output
+/dist_electron
