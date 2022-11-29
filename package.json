@@ -21,7 +21,7 @@
     "lint": "eslint --ext .ts,.js . --fix",
     "prettier:format": "prettier --write \"**/*.{ts,js,json,md}\"",
     "prettier:check": "prettier --check \"**/*.{ts,js,json,md}\"",
-    "clean": "rm -rf dist",
+    "clean": "del-cli dist",
     "prepare": "npm run prepublish",
     "pre-commit": "lint-staged",
     "huskyinstall": "husky install"
@@ -53,6 +53,7 @@
     "@types/node": "^18.7.18",
     "@typescript-eslint/eslint-plugin": "^5.38.0",
     "@typescript-eslint/parser": "^5.38.0",
+    "del-cli": "^5.0.0",
     "eslint": "8.22.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-jest": "^27.0.4",
