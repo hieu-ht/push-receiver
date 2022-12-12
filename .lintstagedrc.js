@@ -1,5 +1,4 @@
 module.exports = {
-  "*.{js,ts}": "npm run lint",
-  "*.{ts,js,json,md}": "npm run prettier:format",
-  "*": "npm run build",
+  "*.{js,ts}": "eslint --fix",
+  "*.{ts,js,json,md}": "prettier --write",
 };
