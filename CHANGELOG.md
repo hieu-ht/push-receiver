@@ -1,4 +1,4 @@
-# @eneris/push-receiver
+# @hieudevx/push-receiver
 
 ## 3.1.0
 

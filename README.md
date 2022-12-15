@@ -18,7 +18,7 @@ See [this blog post](https://medium.com/@MatthieuLemoine/my-journey-to-bring-web
 
 ## Install
 
-`npm i -S @eneris/push-receiver`
+`npm i -S @hieudevx/push-receiver`
 
 ## Requirements
 
@@ -48,7 +48,7 @@ interface ClientConfig {
 ### Node example
 
 ```javascript
-import PushReceiver from "@eneris/push-receiver";
+import PushReceiver from "@hieudevx/push-receiver";
 import { argv as parsedArgs } from "yargs";
 
 if (!parsedArgs.senderId) {
