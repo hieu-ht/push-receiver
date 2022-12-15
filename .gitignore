@@ -9,6 +9,8 @@ src/protos.d.ts
 *.tsbuildinfo
 yarn-error.log
 
+/dist
+
 .DS_Store
 node_modules
 
