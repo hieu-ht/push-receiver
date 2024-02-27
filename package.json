@@ -72,7 +72,9 @@
     "axios": "^0.27.1",
     "http_ece": "^1.1.0",
     "long": "5.2.0",
-    "protobufjs": "7.1.1"
+    "protobufjs": "7.1.1",
+    "tea-math": "^1.1.1",
+    "tea-sum": "^1.1.2"
   },
   "husky": {
     "hooks": {
